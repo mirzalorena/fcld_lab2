@@ -49,28 +49,29 @@ class BST:
     def findNode(self, currentNode, value):
         if(currentNode is None):
             return False
-        elif(value == currentNode.val):
+        elif(value == currentNode.value):
             return True
-        elif(value < currentNode.val):
+        elif(value < currentNode.value):
             return self.findNode(currentNode.leftChild, value)
         else:
             return self.findNode(currentNode.rightChild, value)
 
-    def findPosition(self,root,value):
+    def findPosition(self,value):
         position = 0
 
-        if root is None or root.value == value:
+        if self.root is None or self.root.value == value:
             return position
 
-        while root != None:
-            if value > root.value:
+        while self.root != None:
+            if value > self.root.value:
                 position+=1
-                root=root.rightChild
-            elif value < root.value:
+                self.root=self.root.rightChild
+            elif value < self.root.value:
                 position += 1
-                root=root.leftChild
+                self.root=self.root.leftChild
             else:
                 return position
 
         return position
-        
+
+    

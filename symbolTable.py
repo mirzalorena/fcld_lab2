@@ -10,5 +10,8 @@ class SymbolTable:
     def get(self,value):
         return self.__bst.find(value)
 
+    def getPosition(self,value):
+        return self.__bst.findPosition(value)
+
     def __str__(self):
         return str(self.__bst)
