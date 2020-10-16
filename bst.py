@@ -1,6 +1,5 @@
 class Node:
-    def __init__(self,key, value):
-        self.key=key
+    def __init__(self, value):
         self.value = value
         self.leftChild = None
         self.rightChild = None
@@ -10,12 +9,6 @@ class Node:
 
     def set(self, val):
         self.value = val
-
-    def getKey(self):
-        return self.key
-
-    def setKey(self,key):
-        self.key=key
 
     def getChildren(self):
         children = []
@@ -30,7 +23,7 @@ class BST:
         self.root = None
 
     def setRoot(self, value):
-        self.root = Node(0,value)
+        self.root = Node(value)
 
     def insert(self, value):
         if(self.root is None):
@@ -62,3 +55,22 @@ class BST:
             return self.findNode(currentNode.leftChild, value)
         else:
             return self.findNode(currentNode.rightChild, value)
+
+    def findPosition(self,root,value):
+        position = 0
+
+        if root is None or root.value == value:
+            return position
+
+        while root != None:
+            if value > root.value:
+                position+=1
+                root=root.rightChild
+            elif value < root.value:
+                position += 1
+                root=root.leftChild
+            else:
+                return position
+
+        return position
+        
