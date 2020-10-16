@@ -1,0 +1,25 @@
+// compute the max of 5 numbers
+
+array[] <- []
+
+n1 <- input("Number 1:")
+array[0] <- n1
+n2 <- input("Number 2:")
+array[1] <- n2
+n3 <- input("Number 3:")
+array[2] <- n3
+n4 <- input("Number 4:")
+array[3] <- n4
+n5 <- input("Number 5:")
+array[4] <- n5
+
+result <- 0
+
+justFor i <- 0 while i < 5 do i+
+{
+	onlyIf array[i] > result 
+		result <- array[i]
+}
+
+prettyPrint(result)
+
