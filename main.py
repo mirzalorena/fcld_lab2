@@ -6,8 +6,6 @@ def print_hi(name):
     # Use a breakpoint in the code line below to debug your script.
     print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
 
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     #print_hi('PyCharm')
     print("Hello")
@@ -19,7 +17,11 @@ if __name__ == '__main__':
     symbolTable.add("c")
     symbolTable.add("d")
 
+    print(symbolTable.get("a"))
+    print(symbolTable.get("e"))
+
     print(symbolTable.getPosition("d"))
+    print(symbolTable.get("g"))
 
 
 

@@ -58,7 +58,6 @@ class BST:
 
     def findPosition(self,value):
         position = 0
-
         if self.root is None or self.root.value == value:
             return position
 
