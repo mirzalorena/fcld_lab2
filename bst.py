@@ -57,6 +57,9 @@ class BST:
             return self.findNode(currentNode.rightChild, value)
 
     def findPosition(self,value):
+        if self.find(value) is False:
+            return -1
+
         position = 0
         if self.root is None or self.root.value == value:
             return position

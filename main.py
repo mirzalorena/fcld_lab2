@@ -7,7 +7,6 @@ def print_hi(name):
     print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
 
 if __name__ == '__main__':
-    #print_hi('PyCharm')
     print("Hello")
 
     symbolTable = SymbolTable()
@@ -20,8 +19,9 @@ if __name__ == '__main__':
     print(symbolTable.get("a"))
     print(symbolTable.get("e"))
 
+    print(symbolTable.getPosition("a"))
     print(symbolTable.getPosition("d"))
-    print(symbolTable.get("g"))
+    print(symbolTable.getPosition("g"))
 
 
 
