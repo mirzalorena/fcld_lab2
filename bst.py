@@ -1,5 +1,6 @@
 class Node:
-    def __init__(self, value):
+    def __init__(self,key, value):
+        self.key=key
         self.value = value
         self.leftChild = None
         self.rightChild = None
@@ -9,6 +10,12 @@ class Node:
 
     def set(self, val):
         self.value = val
+
+    def getKey(self):
+        return self.key
+
+    def setKey(self,key):
+        self.key=key
 
     def getChildren(self):
         children = []
@@ -23,7 +30,7 @@ class BST:
         self.root = None
 
     def setRoot(self, value):
-        self.root = Node(value)
+        self.root = Node(0,value)
 
     def insert(self, value):
         if(self.root is None):
