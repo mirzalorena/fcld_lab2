@@ -11,10 +11,10 @@ if __name__ == '__main__':
 
     symbolTable = SymbolTable()
 
-    symbolTable.add("a")
-    symbolTable.add("b")
-    symbolTable.add("c")
-    symbolTable.add("d")
+    symbolTable.add(["a",7])
+    symbolTable.add(["b",5])
+    symbolTable.add(["c",8])
+    symbolTable.add(["d",11])
 
     print(symbolTable.get("a"))
     print(symbolTable.get("e"))

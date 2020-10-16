@@ -32,12 +32,12 @@ class BST:
             self.insertNode(self.root, value)
 
     def insertNode(self, currentNode, value):
-        if(value <= currentNode.value):
+        if(value[0] <= currentNode.value[0]):
             if(currentNode.leftChild):
                 self.insertNode(currentNode.leftChild, value)
             else:
                 currentNode.leftChild = Node(value)
-        elif(value > currentNode.value):
+        elif(value[0] > currentNode.value[0]):
             if(currentNode.rightChild):
                 self.insertNode(currentNode.rightChild, value)
             else:
@@ -49,9 +49,9 @@ class BST:
     def findNode(self, currentNode, value):
         if(currentNode is None):
             return False
-        elif(value == currentNode.value):
+        elif(value[0] == currentNode.value[0]):
             return True
-        elif(value < currentNode.value):
+        elif(value[0] < currentNode.value[0]):
             return self.findNode(currentNode.leftChild, value)
         else:
             return self.findNode(currentNode.rightChild, value)
@@ -61,14 +61,14 @@ class BST:
             return -1
 
         position = 0
-        if self.root is None or self.root.value == value:
+        if self.root is None or self.root.value[0] == value[0]:
             return position
 
         while self.root != None:
-            if value > self.root.value:
+            if value[0] > self.root.value[0]:
                 position+=1
                 self.root=self.root.rightChild
-            elif value < self.root.value:
+            elif value[0] < self.root.value[0]:
                 position += 1
                 self.root=self.root.leftChild
             else:
