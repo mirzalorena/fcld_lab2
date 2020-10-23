@@ -3,9 +3,8 @@ import re
 
 class Scanner:
     def isOperator(self,char):
-        for operator in operators:
-            if char in operator:
-                return True
+        if char in operators:
+            return True
         return False
 
     def getOperator(self,line,index):
