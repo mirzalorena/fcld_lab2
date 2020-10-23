@@ -1,0 +1,8 @@
+Float x
+Float xSquared
+Float solution
+x <- input("Enter value for x:) //missing “
+solution <- 0
+x_sqared <- x * x // the operator should be X* , not just *
+solution <- 2 * x_sqared + 3x + 4
+prettyPrint(solution)
