@@ -6,21 +6,19 @@ from programInternalForm import ProgramInternalForm
 if __name__ == '__main__':
     '''
     print("Hello")
-
     symbolTable = SymbolTable()
-    
+
     symbolTable.add(["a", 7])
     symbolTable.add(["b", 5])
     symbolTable.add(["c", 8])
     symbolTable.add(["d", 11])
-
     print(symbolTable.get("a"))
     print(symbolTable.get("e"))
-
     print(symbolTable.getPosition("a"))
     print(symbolTable.getPosition("d"))
     print(symbolTable.getPosition("g"))
     '''
+
 
     scanner=Scanner()
 
@@ -45,19 +43,18 @@ if __name__ == '__main__':
             count+=1
             for token in scanner.tokenize(line[0:-1],separators):
                 if token in everything:
-                    ''''''
-                if scanner.isIdentifier(token):
+                    pif.add(codification[token],-1)
+                elif scanner.isIdentifier(token):
                     symbolTable.add(token)
+                    id=symbolTable.getPosition(token)
+                    pif.add(codification['id'],id)
                 elif scanner.isConstant(token):
                     symbolTable.add(token)
+                    id = symbolTable.getPosition(token)
+                    pif.add(codification['const'], id)
                 else:
-                    flag=1
-                    #raise Exception("Token not found "+token+" at line "+str(count))
+                    raise Exception("Token not found "+token+" at line "+str(count))
 
-    if(flag==0):
-        print("Lexically correct")
-    else:
-        print("Lexically incorrect")
 
     print("Program Internal Form: \n" + pif.__str__())
     print("Symbol Table: \n"+symbolTable.__str__())

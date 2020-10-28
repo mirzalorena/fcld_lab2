@@ -32,12 +32,12 @@ class BST:
             self.insertNode(self.root, value)
 
     def insertNode(self, currentNode, value):
-        if(value <= currentNode.value):
+        if(value[0] <= currentNode.value[0]):
             if(currentNode.leftChild):
                 self.insertNode(currentNode.leftChild, value)
             else:
                 currentNode.leftChild = Node(value)
-        elif(value > currentNode.value):
+        elif(value[0] > currentNode.value[0]):
             if(currentNode.rightChild):
                 self.insertNode(currentNode.rightChild, value)
             else:
@@ -49,12 +49,26 @@ class BST:
     def findNode(self, currentNode, value):
         if(currentNode is None):
             return False
-        elif(value == currentNode.value):
+        elif(value[0] == currentNode.value[0]):
             return True
-        elif(value < currentNode.value):
+        elif(value[0] < currentNode.value[0]):
             return self.findNode(currentNode.leftChild, value)
         else:
             return self.findNode(currentNode.rightChild, value)
+
+    def findIndex(self,value):
+        return self.findIndexAux(self.root,value)
+
+    def findIndexAux(self,currentNode,value):
+        if (currentNode is None):
+            return -1
+        elif (value == currentNode.value[0]):
+            return value[1]
+        elif (value < currentNode.value[0]):
+            return self.findNode(currentNode.leftChild, value)
+        else:
+            return self.findNode(currentNode.rightChild, value)
+
 
     def findPosition(self,value):
         if self.find(value) is False:
@@ -65,15 +79,13 @@ class BST:
             return position
 
         while self.root != None:
-            if value > self.root.value:
+            if value[0] > self.root.value[0]:
                 position+=1
                 self.root=self.root.rightChild
-            elif value< self.root.value:
+            elif value[0]< self.root.value[0]:
                 position += 1
                 self.root=self.root.leftChild
             else:
                 return position
 
         return position
-
-    
