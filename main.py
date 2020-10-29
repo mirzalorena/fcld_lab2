@@ -1,5 +1,5 @@
 from symbolTable import SymbolTable
-from token import *
+from tokens import *
 from scanner import *
 from programInternalForm import ProgramInternalForm
 from bst import *

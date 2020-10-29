@@ -56,7 +56,6 @@ class BST:
 
     def add(self,value):
         if self.root:
-            print("ROOT: "+self.root.value[0])
             return self.root.insert(value)
         else:
             self.root = Node(value)
@@ -108,16 +107,17 @@ class BST:
             return -1
 
         position = 0
-        if self.root is None or self.root.value == value:
+        auxRoot=self.root
+        if auxRoot is None or auxRoot.value == value:
             return position
 
-        while self.root != None:
-            if value[0] > self.root.value[0]:
+        while auxRoot != None:
+            if value[0] > auxRoot.value[0]:
                 position += 1
-                self.root = self.root.rightChild
-            elif value[0] < self.root.value[0]:
+                auxRoot = auxRoot.rightChild
+            elif value[0] < auxRoot.value[0]:
                 position += 1
-                self.root = self.root.leftChild
+                auxRoot = auxRoot.leftChild
             else:
                 return position
 
