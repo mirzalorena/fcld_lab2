@@ -2,7 +2,7 @@ separators = ['[', ']', '{', '}', '(', ')', ';', ' ', '\n']
 operators = ['+', '-', 'X*', '/', '%', '<', '<=', '=', '>=', '>',
              '&', '||', '!=',  ',', '<-']
 reservedWords=['input','prettyPrint','Int','Float',
-               'Char','onlyIf','soElse','justFor','Void','While','Do']
+               'Char','onlyIf','soElse','justFor','Void','while','do']
 everything = separators + operators + reservedWords
 
 codification=dict()

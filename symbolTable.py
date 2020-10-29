@@ -5,10 +5,16 @@ class SymbolTable:
         self.__bst=BST()
 
     def add(self,value):
-        return self.__bst.insert(value)
+        return self.__bst.add(value)
 
     def get(self,value):
         return self.__bst.find(value)
+
+    def getRoot(self):
+        return self.__bst.getRoot()
+
+    def setRoot(self,root):
+        return self.__bst.setRoot(root)
 
     def getPosition(self,value):
         return self.__bst.findPosition(value)
@@ -17,4 +23,6 @@ class SymbolTable:
         return self.__bst.findIndex(value)
 
     def __str__(self):
-        return str(self.__bst)
+        return self.__bst.in_order()
+
+
