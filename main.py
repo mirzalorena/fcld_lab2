@@ -19,6 +19,10 @@ if __name__ == '__main__':
         for line in fopen:
             print([token for token in scanner.tokenize(line,separators)])
 
+    print("\nCODES: ")
+    for i in range(len(everything)):
+        print(everything[i]+" "+str(codification[everything[i]]))
+
     symbolTable=SymbolTable()
     pif=ProgramInternalForm()
 
