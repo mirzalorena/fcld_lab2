@@ -33,7 +33,8 @@ if __name__ == '__main__':
             count+=1
             for token in scanner.tokenize(line[0:-1],separators):
                 if token in everything:
-                    pif.add(codification[token],-1)
+                    if token != ' ':
+                        pif.add(codification[token],-1)
                 elif scanner.isIdentifier(token):
                     #print("ID: "+token)
                     symbolTable.add([token, codification['id']])

@@ -72,15 +72,15 @@ class BST:
             return self.insertNode(rootAux, value)
 
     def insertNode(self, currentNode, value):
-        if(value[0]==currentNode.value[0]):
+        if(value==currentNode.value[0]):
             currentNode.value=value
-        elif (value[0] < currentNode.value[0]):
+        elif (value < currentNode.value[0]):
             if (currentNode.leftChild):
                 print("LEFT: "+currentNode.leftChild.value[0])
                 self.insertNode(currentNode.leftChild, value)
             else:
                 currentNode.leftChild = Node(value)
-        elif (value[0] > currentNode.value[0]):
+        elif (value > currentNode.value[0]):
             if (currentNode.rightChild):
                 print("RIGHT: " + currentNode.rightChild.value[0])
                 self.insertNode(currentNode.rightChild, value)
@@ -94,9 +94,9 @@ class BST:
     def findNode(self, currentNode, value):
         if (currentNode is None):
             return False
-        elif (value[0] == currentNode.value[0]):
+        elif (value == currentNode.value[0]):
             return True
-        elif (value[0] < currentNode.value[0]):
+        elif (value < currentNode.value[0]):
             return self.findNode(currentNode.leftChild, value)
         else:
             return self.findNode(currentNode.rightChild, value)
@@ -112,10 +112,10 @@ class BST:
             return position
 
         while auxRoot != None:
-            if value[0] > auxRoot.value[0]:
+            if value > auxRoot.value[0]:
                 position += 1
                 auxRoot = auxRoot.rightChild
-            elif value[0] < auxRoot.value[0]:
+            elif value < auxRoot.value[0]:
                 position += 1
                 auxRoot = auxRoot.leftChild
             else:

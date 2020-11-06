@@ -72,6 +72,8 @@ class Scanner:
             return False
         elif letters[0] in ['+', '-'] and len(letters) > 1 and letters[1] == '0':
             return False
+        elif letters[0] == '*':
+            return False
         else:
             return True
 
