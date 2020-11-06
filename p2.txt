@@ -1,8 +1,8 @@
 Float x
-Float xSquared
+Float squared
 Float solution
 x <- input("Enter value for x:")
 solution <- 0
-x_sqared <- x X* x
-solution <- 2 X* x_sqared + x + 4
+squared <- x X* x
+solution <- 2 X* squared + x + 4
 prettyPrint(solution)
