@@ -69,26 +69,27 @@ class FiniteAutomata:
         return True
 
     def isAccepted(self,w,state):
-        elements=list(w)
+        sequence=list(w)
         result=False
 
-        if state in self.F:
-            return False
-
-        for lhs in self.S[0][0]:
-            if lhs[0]==state and lhs[1]==elements[0]:
-                if len(elements)==1:
-                    for transition in self.S[lhs]:
-                        if transition in self.F:
+        for lhs in self.getSKeys():
+            if lhs[0]==state and lhs[1]==sequence[0]:
+                if len(sequence)==1:
+                    for transition in self.getSByKey(lhs):
+                        if transition[1] in self.F:
                             return True
                     return False
                 else:
-                    for t in self.S[lhs]:
-                        result=self.isAccepted([w[1:],self.S[lhs][0]])
+                    for t in self.getSByKey(lhs):
+                        result=self.isAccepted(w[1:],self.getSByKey(lhs)[0][0][0])
                         if result:
                             break
 
         return result
+
+    def sequenceAccepted(self,W):
+        if self.checkDFA():
+            return self.isAccepted(W,self.q0)
 
 def menu():
     print("0. Exit")
@@ -107,7 +108,7 @@ if __name__ == '__main__':
     option=-1
 
     fa = FiniteAutomata.fromFile("fa.txt")
-    print(fa.checkDFA())
+    #print(fa.isAccepted('0100',fa.q0))
 
     while(option!=0):
         option=int(input("What do you wanna see?"))

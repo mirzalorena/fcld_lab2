@@ -1,7 +1,10 @@
+from fa.finiteAutomata import FiniteAutomata
 from tokens import *
 import re
+from fa.finiteAutomata import *
 
 class Scanner:
+
     def isOperator(self,char):
         if char in operators:
             return True
@@ -62,10 +65,13 @@ class Scanner:
 
 
     def isIdentifier(self,token):
-        return re.match(r'^[a-zA-Z]([a-zA-Z]|[0-9]|_){,7}$', token) is not None
+        #return re.match(r'^[a-zA-Z]([a-zA-Z]|[0-9]|_){,7}$', token) is not None
+        faIdentifier = FiniteAutomata.fromFile("faIdentifier.txt")
+        return faIdentifier.sequenceAccepted(token)
 
     def isConstant(self,token):
         #return re.match('^(0|[\+\-]?[1-9][0-9]*)$|^\'.\'$|^\".*\"$', token) is not None
+
         letters = list(token)
 
         if letters[0] == '0' and len(letters) > 1:
@@ -76,5 +82,9 @@ class Scanner:
             return False
         else:
             return True
-
+        '''
+        faConstantInt = FiniteAutomata.fromFile("faConstantInteger.txt")
+        faConstantString = FiniteAutomata.fromFile("faConstantString.txt")
+        return faConstantInt.sequenceAccepted(token) or faConstantString.sequenceAccepted(token)
+        '''
 
