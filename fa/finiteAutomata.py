@@ -8,9 +8,6 @@ class FiniteAutomata:
         self.q0 = q0
         self.F = F
 
-    def isState(self,value):
-        return value in self.Q
-
     def parseLine(line):
         return [value.strip() for value in line.strip().split('=')[1].strip()[1:-1].strip().split(',')]
 
@@ -45,6 +42,19 @@ class FiniteAutomata:
     def printS(self):
         return 'S = { ' + '\n '.join([' -> '.join([str(part) for part in trans]) for trans in self.S]) + ' }\n'
 
+    def getSKeys(self):
+        list=[]
+        for i in self.S:
+            list.append(i[0])
+        return list
+
+    def getSByKey(self,key):
+        list=[]
+        for i in self.S:
+            if i[0]==key:
+                list.append(i)
+        return list
+
     def __str__(self):
         return 'Q =' + str(self.Q) + ' \n' \
                + 'E =  ' + str(self.E)+ ' \n' \
@@ -52,9 +62,37 @@ class FiniteAutomata:
                + 'q0 = ' + str(self.q0) + '\n'\
                + 'S = { ' + '\n '.join([' -> '.join([str(part) for part in trans]) for trans in self.S]) + ' }\n'
 
+    def checkDFA(self):
+        for i in self.getSKeys():
+            if len(self.getSByKey(i))>1:
+                return False
+        return True
+
+    def isAccepted(self,w,state):
+        elements=list(w)
+        result=False
+
+        if state in self.F:
+            return False
+
+        for lhs in self.S[0][0]:
+            if lhs[0]==state and lhs[1]==elements[0]:
+                if len(elements)==1:
+                    for transition in self.S[lhs]:
+                        if transition in self.F:
+                            return True
+                    return False
+                else:
+                    for t in self.S[lhs]:
+                        result=self.isAccepted([w[1:],self.S[lhs][0]])
+                        if result:
+                            break
+
+        return result
+
 def menu():
-    print("0.Exit")
-    print("1.Set of states")
+    print("0. Exit")
+    print("1. Set of states")
     print("2. The alphabet")
     print("3. Initial state")
     print("4. Final States")
@@ -69,6 +107,7 @@ if __name__ == '__main__':
     option=-1
 
     fa = FiniteAutomata.fromFile("fa.txt")
+    print(fa.checkDFA())
 
     while(option!=0):
         option=int(input("What do you wanna see?"))
