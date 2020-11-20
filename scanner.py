@@ -71,7 +71,7 @@ class Scanner:
 
     def isConstant(self,token):
         #return re.match('^(0|[\+\-]?[1-9][0-9]*)$|^\'.\'$|^\".*\"$', token) is not None
-
+        '''
         letters = list(token)
 
         if letters[0] == '0' and len(letters) > 1:
@@ -86,5 +86,5 @@ class Scanner:
         faConstantInt = FiniteAutomata.fromFile("faConstantInteger.txt")
         faConstantString = FiniteAutomata.fromFile("faConstantString.txt")
         return faConstantInt.sequenceAccepted(token) or faConstantString.sequenceAccepted(token)
-        '''
+
 
